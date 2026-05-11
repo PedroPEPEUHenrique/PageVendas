@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oferta Especial | Backend Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --CorFundo: #fafaf7;
+  --CorCartao: #ffffff;
+  --CorTexto: #1c1c1a;
+  --CorTextoSuave: #6b6b65;
+  --CorTextoMuito: #a8a8a0;
+  --CorDestaque: #4a6b3a;
+  --CorDestaqueClaro: #6b8b58;
+  --CorDestaqueFundo: #eef2ea;
+  --CorBorda: #e8e6df;
+  --CorBordaForte: #1c1c1a;
+  --CorAmarelo: #f4d35e;
+  --CorSombraSuave: rgba(28, 28, 26, 0.04);
+  --CorSombraMedia: rgba(28, 28, 26, 0.08);
+
+  --FonteDisplay: 'Instrument Serif', Georgia, serif;
+  --FonteCorpo: 'Geist', -apple-system, sans-serif;
+  --FonteMono: 'Geist Mono', monospace;
+
+  --Raio: 14px;
+  --RaioPequeno: 8px;
+  --RaioGrande: 22px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--FonteCorpo);
+  background-color: var(--CorFundo);
+  color: var(--CorTexto);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.Container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* Barra do topo */
+.BarraTopo {
+  background-color: rgba(250, 250, 247, 0.95);
+  border-bottom: 1px solid var(--CorBorda);
+  padding: 1.1rem 0;
+}
+
+.BarraTopoConteudo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LogoMarca {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--CorTexto);
+}
+
+.LogoIcone {
+  width: 32px;
+  height: 32px;
+  background-color: var(--CorTexto);
+  border-radius: 8px;
+}
+
+.LogoTexto {
+  font-family: var(--FonteDisplay);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.LogoTexto em {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+/* Conteúdo principal */
+main {
+  flex: 1;
+  padding: 4rem 0 5rem;
+}
+
+.UpsellCabecalho {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.UpsellEtiqueta {
+  display: inline-block;
+  font-family: var(--FonteMono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--CorDestaque);
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem;
+  background-color: var(--CorDestaqueFundo);
+  border-radius: 100px;
+}
+
+.UpsellTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+
+.UpsellTitulo em {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+.UpsellSubtitulo {
+  font-size: 1.05rem;
+  color: var(--CorTextoSuave);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Caixa do widget */
+.UpsellCaixa {
+  background-color: var(--CorCartao);
+  border: 1px solid var(--CorBorda);
+  border-radius: var(--RaioGrande);
+  padding: 2.5rem;
+  box-shadow: 0 4px 24px var(--CorSombraMedia);
+  display: flex;
+  justify-content: center;
+}
+
+#box_affiliatespay {
+  width: 100%;
+  max-width: 650px;
+}
+
+/* Rodapé */
+.RodapeMini {
+  background-color: var(--CorTexto);
+  color: rgba(250, 250, 247, 0.5);
+  padding: 1.5rem 0;
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .UpsellCaixa {
+    padding: 1.5rem 1rem;
+  }
+
+  main {
+    padding: 2.5rem 0 3.5rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="BarraTopo">
+  <div class="Container">
+    <div class="BarraTopoConteudo">
+      <a href="index.html" class="LogoMarca">
+        <div class="LogoIcone"></div>
+        <span class="LogoTexto">Back<em>end</em> Lab</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="Container">
+
+    <div class="UpsellCabecalho">
+      <span class="UpsellEtiqueta">Oferta exclusiva</span>
+      <h1 class="UpsellTitulo">
+        Espere! Temos uma <em>oferta especial</em><br>para você.
+      </h1>
+      <p class="UpsellSubtitulo">
+        Aproveite esta oportunidade única disponível apenas agora, logo após a sua compra.
+      </p>
+    </div>
+
+    <div class="UpsellCaixa">
+      <!-- AFFILIATESPAY - Upsell Widget -->
+      <div id="box_affiliatespay"></div>
+      <!-- AFFILIATESPAY - Upsell Widget -->
+    </div>
+
+  </div>
+</main>
+
+<footer class="RodapeMini">
+  <div class="Container">
+    © 2026 · Backend Lab · Todos os direitos reservados
+  </div>
+</footer>
+
+<!-- AFFILIATESPAY - Upsell Widget Scripts -->
+<script src="https://pay.celetus.com/assets/js/affiliatespay.upsell.js"></script>
+<script>
+  opts = {
+    key: '6184b9c7-44dd-4156-bf79-8967cf41b447',
+    width: '650',
+    height: '420'
+  };
+  Upsell.Widget.show(opts);
+</script>
+<!-- AFFILIATESPAY - Upsell Widget Scripts -->
+
+</body>
+</html>

@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Introdutório de Back-End | Comece sua jornada por R$ 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --CorFundo: #fafaf7;
+  --CorCartao: #ffffff;
+  --CorTexto: #1c1c1a;
+  --CorTextoSuave: #6b6b65;
+  --CorTextoMuito: #a8a8a0;
+  --CorDestaque: #4a6b3a;
+  --CorDestaqueClaro: #6b8b58;
+  --CorDestaqueFundo: #eef2ea;
+  --CorBorda: #e8e6df;
+  --CorBordaForte: #1c1c1a;
+  --CorAmarelo: #f4d35e;
+  --CorSombraSuave: rgba(28, 28, 26, 0.04);
+  --CorSombraMedia: rgba(28, 28, 26, 0.08);
+
+  --FonteDisplay: 'Instrument Serif', Georgia, serif;
+  --FonteCorpo: 'Geist', -apple-system, sans-serif;
+  --FonteMono: 'Geist Mono', monospace;
+
+  --Raio: 14px;
+  --RaioPequeno: 8px;
+  --RaioGrande: 22px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--FonteCorpo);
+  background-color: var(--CorFundo);
+  color: var(--CorTexto);
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.Container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.BarraTopo {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(250, 250, 247, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--CorBorda);
+}
+
+.BarraTopoConteudo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 0;
+}
+
+.LogoMarca {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--CorTexto);
+}
+
+.LogoIcone {
+  width: 32px;
+  height: 32px;
+  background-color: var(--CorTexto);
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.LogoIcone::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background-color: var(--CorDestaque);
+  border-radius: 4px;
+  transform: rotate(45deg);
+}
+
+.LogoIcone::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--CorFundo);
+  border-radius: 50%;
+}
+
+.LogoTexto {
+  font-family: var(--FonteCorpo);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.LogoTexto em {
+  font-family: var(--FonteDisplay);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--CorDestaque);
+}
+
+.BarraTopoNav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.NavItem a {
+  text-decoration: none;
+  color: var(--CorTextoSuave);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.NavItem a:hover {
+  color: var(--CorTexto);
+}
+
+.BotaoBarra {
+  background-color: var(--CorTexto);
+  color: var(--CorFundo);
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--RaioPequeno);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.BotaoBarra:hover {
+  background-color: var(--CorDestaque);
+  transform: translateY(-1px);
+}
+
+.SecaoHeroi {
+  padding: 5rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.HeroiConteudo {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.HeroiAviso {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background-color: var(--CorDestaqueFundo);
+  border: 1px solid var(--CorDestaqueClaro);
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  color: var(--CorDestaque);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.HeroiAvisoIcone {
+  width: 16px;
+  height: 16px;
+  background-color: var(--CorDestaque);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--CorFundo);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.HeroiTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.75rem;
+  color: var(--CorTexto);
+}
+
+.HeroiTituloItalico {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+.HeroiSubtitulo {
+  font-size: 1.2rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.HeroiAcoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.BotaoPrincipal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background-color: var(--CorTexto);
+  color: var(--CorFundo);
+  padding: 1.1rem 2rem;
+  border-radius: var(--Raio);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 8px 24px rgba(28, 28, 26, 0.15);
+}
+
+.BotaoPrincipal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(28, 28, 26, 0.22);
+  background-color: var(--CorDestaque);
+}
+
+.BotaoPrincipal svg {
+  transition: transform 0.25s ease;
+}
+
+.BotaoPrincipal:hover svg {
+  transform: translateX(4px);
+}
+
+.BotaoSecundario {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--CorTexto);
+  padding: 1.1rem 1.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.BotaoSecundario:hover {
+  color: var(--CorDestaque);
+}
+
+.HeroiSeguranca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  color: var(--CorTextoSuave);
+  font-family: var(--FonteMono);
+}
+
+.HeroiPreview {
+  margin-top: 5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PreviewLivro {
+  position: relative;
+  width: 280px;
+  height: 380px;
+  transform: perspective(1200px) rotateY(-15deg) rotateX(8deg);
+  transition: transform 0.6s ease;
+  z-index: 3;
+}
+
+.PreviewLivro:hover {
+  transform: perspective(1200px) rotateY(-5deg) rotateX(2deg);
+}
+
+.PreviewLivroCapa {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #2d3e2d 0%, #4a6b3a 100%);
+  border-radius: 4px 14px 14px 4px;
+  padding: 2.25rem 1.75rem 1.75rem;
+  color: var(--CorFundo);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow:
+    0 25px 50px rgba(28, 28, 26, 0.25),
+    0 40px 80px rgba(28, 28, 26, 0.18),
+    inset 4px 0 0 rgba(0, 0, 0, 0.15);
+}
+
+.PreviewLivroEtiqueta {
+  font-family: var(--FonteMono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.PreviewLivroTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: 2.5rem;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+
+.PreviewLivroTitulo em {
+  font-style: italic;
+  display: block;
+  color: #d4e4c4;
+}
+
+.PreviewLivroBase {
+  font-family: var(--FonteMono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.PreviewFloatingBadge {
+  position: absolute;
+  background-color: var(--CorAmarelo);
+  color: var(--CorTexto);
+  padding: 0.75rem 1.1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--FonteMono);
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 25px rgba(244, 211, 94, 0.4);
+  z-index: 4;
+}
+
+.PreviewBadgePreco {
+  top: 30px;
+  right: 40px;
+  animation: FlutuarBadge 4s ease-in-out infinite;
+}
+
+.PreviewBadgeIntro {
+  bottom: 60px;
+  left: 20px;
+  background-color: var(--CorCartao);
+  color: var(--CorDestaque);
+  border: 1.5px solid var(--CorDestaque);
+  animation: FlutuarBadge 4s ease-in-out infinite 1s;
+}
+
+@keyframes FlutuarBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.HeroiOrnamento {
+  position: absolute;
+  font-family: var(--FonteDisplay);
+  font-style: italic;
+  color: var(--CorDestaque);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+}
+
+.HeroiOrnamentoEsquerda {
+  top: 8rem;
+  left: -2rem;
+  font-size: 12rem;
+  transform: rotate(-15deg);
+}
+
+.HeroiOrnamentoDireita {
+  top: 5rem;
+  right: -3rem;
+  font-size: 14rem;
+  transform: rotate(20deg);
+}
+
+.SecaoSelos {
+  border-top: 1px solid var(--CorBorda);
+  border-bottom: 1px solid var(--CorBorda);
+  padding: 2rem 0;
+  background-color: var(--CorCartao);
+}
+
+.SelosConteudo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.SeloItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.SeloNumero {
+  font-family: var(--FonteDisplay);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--CorTexto);
+  font-style: italic;
+}
+
+.SeloDescricao {
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--CorTextoSuave);
+}
+
+.SecaoSobre {
+  padding: 6rem 0;
+}
+
+.SobreGrade {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.SobreEtiqueta {
+  display: inline-block;
+  font-family: var(--FonteMono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--CorDestaque);
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0.85rem;
+  background-color: var(--CorDestaqueFundo);
+  border-radius: 100px;
+}
+
+.SobreTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+.SobreTitulo em {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+.SobreTexto {
+  font-size: 1.05rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.SobreCartao {
+  background-color: var(--CorCartao);
+  border: 1px solid var(--CorBorda);
+  border-radius: var(--RaioGrande);
+  padding: 2.5rem;
+  position: relative;
+}
+
+.SobreCartaoTitulo {
+  font-family: var(--FonteMono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--CorTextoSuave);
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--CorBorda);
+}
+
+.SobreCartaoLista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.SobreCartaoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+}
+
+.SobreCartaoItem::before {
+  content: '';
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  background-color: var(--CorDestaque);
+  border-radius: 50%;
+  margin-top: 9px;
+}
+
+.SobreCartaoItem strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  color: var(--CorTexto);
+}
+
+.SobreCartaoItem span {
+  color: var(--CorTextoSuave);
+  font-size: 0.88rem;
+}
+
+.SecaoConteudo {
+  padding: 6rem 0;
+  background-color: var(--CorCartao);
+  border-top: 1px solid var(--CorBorda);
+  border-bottom: 1px solid var(--CorBorda);
+}
+
+.CabecalhoSecao {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4rem;
+}
+
+.CabecalhoEtiqueta {
+  display: inline-block;
+  font-family: var(--FonteMono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--CorDestaque);
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem;
+  background-color: var(--CorDestaqueFundo);
+  border-radius: 100px;
+}
+
+.CabecalhoTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.25rem;
+}
+
+.CabecalhoTitulo em {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+.CabecalhoDescricao {
+  font-size: 1.1rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.65;
+}
+
+.GradeConteudo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.ConteudoCartao {
+  background-color: var(--CorFundo);
+  border: 1px solid var(--CorBorda);
+  border-radius: var(--Raio);
+  padding: 1.75rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.ConteudoCartao:hover {
+  transform: translateY(-4px);
+  border-color: var(--CorDestaque);
+  box-shadow: 0 12px 28px rgba(74, 107, 58, 0.12);
+}
+
+.ConteudoCartaoTopo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.ConteudoCartaoNumero {
+  font-family: var(--FonteMono);
+  font-size: 0.75rem;
+  color: var(--CorTextoSuave);
+  letter-spacing: 0.1em;
+}
+
+.ConteudoCartaoIcone {
+  width: 36px;
+  height: 36px;
+  background-color: var(--CorDestaqueFundo);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: var(--CorDestaque);
+}
+
+.ConteudoCartao:hover .ConteudoCartaoIcone {
+  background-color: var(--CorDestaque);
+  color: var(--CorFundo);
+}
+
+.ConteudoCartaoTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.5rem;
+  line-height: 1.15;
+}
+
+.ConteudoCartaoDescricao {
+  font-size: 0.92rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+.ConteudoCartaoTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.ConteudoCartaoTag {
+  font-family: var(--FonteMono);
+  font-size: 0.7rem;
+  color: var(--CorTexto);
+  padding: 0.25rem 0.55rem;
+  background-color: var(--CorCartao);
+  border: 1px solid var(--CorBorda);
+  border-radius: 6px;
+}
+
+.SecaoAmostra {
+  padding: 6rem 0;
+}
+
+.AmostraGrade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.AmostraTexto h2 {
+  font-family: var(--FonteDisplay);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+.AmostraTexto h2 em {
+  color: var(--CorDestaque);
+  font-style: italic;
+}
+
+.AmostraTexto p {
+  font-size: 1.05rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.AmostraNumeros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--CorBorda);
+}
+
+.AmostraNumeroItem strong {
+  display: block;
+  font-family: var(--FonteDisplay);
+  font-size: 2.4rem;
+  font-style: italic;
+  color: var(--CorTexto);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.AmostraNumeroItem span {
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--CorTextoSuave);
+}
+
+.AmostraJanela {
+  background-color: var(--CorCartao);
+  border: 1px solid var(--CorBorda);
+  border-radius: var(--Raio);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(28, 28, 26, 0.08);
+}
+
+.AmostraJanelaBarra {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--CorFundo);
+  border-bottom: 1px solid var(--CorBorda);
+}
+
+.JanelaBolinha {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: var(--CorBorda);
+}
+
+.JanelaBolinhaVermelha { background-color: #f5897c; }
+.JanelaBolinhaAmarela { background-color: #f4d35e; }
+.JanelaBolinhaVerde { background-color: #6b8b58; }
+
+.JanelaArquivo {
+  margin-left: auto;
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  color: var(--CorTextoSuave);
+}
+
+.AmostraJanelaCorpo {
+  padding: 1.75rem;
+}
+
+.AmostraJanelaCabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-family: var(--FonteMono);
+  font-size: 0.7rem;
+  color: var(--CorTextoSuave);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.AmostraJanelaTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: 1.7rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.85rem;
+}
+
+.AmostraJanelaTexto {
+  font-size: 0.9rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.AmostraJanelaTexto em {
+  color: var(--CorDestaque);
+  font-style: italic;
+}
+
+.AmostraCodigo {
+  background-color: var(--CorTexto);
+  color: #e8e6df;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--RaioPequeno);
+  font-family: var(--FonteMono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.CodigoComentario { color: #8a8a82; font-style: italic; }
+.CodigoPalavra { color: #c4d4b0; }
+.CodigoString { color: #f4d35e; }
+
+.SecaoOferta {
+  padding: 6rem 0;
+  background-color: var(--CorTexto);
+  color: var(--CorFundo);
+  position: relative;
+  overflow: hidden;
+}
+
+.OfertaConteudo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.OfertaTexto .CabecalhoEtiqueta {
+  background-color: rgba(74, 107, 58, 0.2);
+  color: #c4d4b0;
+}
+
+.OfertaTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--CorFundo);
+  margin-bottom: 1.5rem;
+}
+
+.OfertaTitulo em {
+  font-style: italic;
+  color: #c4d4b0;
+}
+
+.OfertaSubtitulo {
+  font-size: 1.1rem;
+  color: rgba(250, 250, 247, 0.7);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.OfertaCheckList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.OfertaCheckItem {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.98rem;
+  color: rgba(250, 250, 247, 0.9);
+}
+
+.OfertaCheckIcone {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background-color: var(--CorDestaqueClaro);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--CorFundo);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.CartaoOferta {
+  background-color: var(--CorFundo);
+  color: var(--CorTexto);
+  border-radius: var(--RaioGrande);
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.CartaoOfertaSelo {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--CorAmarelo);
+  color: var(--CorTexto);
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px;
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.CartaoOfertaIntro {
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.CartaoOfertaIntroTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.CartaoOfertaIntroTitulo em {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+.CartaoOfertaIntroDescricao {
+  font-size: 0.88rem;
+  color: var(--CorTextoSuave);
+}
+
+.CartaoOfertaPreco {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px dashed var(--CorBorda);
+  border-bottom: 1px dashed var(--CorBorda);
+  margin-bottom: 1.5rem;
+}
+
+.CartaoOfertaPrecoValor {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.CartaoOfertaPrecoMoeda {
+  font-family: var(--FonteDisplay);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--CorTextoSuave);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.CartaoOfertaPrecoNumero {
+  font-family: var(--FonteDisplay);
+  font-size: 5.5rem;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--CorTexto);
+}
+
+.CartaoOfertaPrecoCentavos {
+  font-family: var(--FonteDisplay);
+  font-size: 1.6rem;
+  color: var(--CorTextoSuave);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.CartaoOfertaPrecoLegenda {
+  font-family: var(--FonteMono);
+  font-size: 0.78rem;
+  color: var(--CorTextoSuave);
+  letter-spacing: 0.05em;
+}
+
+.CartaoOfertaPrecoLegenda strong {
+  color: var(--CorDestaque);
+  font-weight: 600;
+}
+
+.CartaoOfertaBotao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  background-color: var(--CorDestaque);
+  color: var(--CorFundo);
+  padding: 1.2rem 1.5rem;
+  border-radius: var(--Raio);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: var(--FonteCorpo);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 8px 20px rgba(74, 107, 58, 0.25);
+  margin-bottom: 1rem;
+}
+
+.CartaoOfertaBotao:hover {
+  background-color: #3d5830;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(74, 107, 58, 0.4);
+}
+
+.CartaoOfertaBotao svg {
+  transition: transform 0.25s ease;
+}
+
+.CartaoOfertaBotao:hover svg {
+  transform: translateX(4px);
+}
+
+.CartaoOfertaInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--FonteMono);
+  font-size: 0.75rem;
+  color: var(--CorTextoSuave);
+  letter-spacing: 0.05em;
+}
+
+.OrnamentoOferta {
+  position: absolute;
+  font-family: var(--FonteDisplay);
+  font-style: italic;
+  color: rgba(196, 212, 176, 0.05);
+  font-size: 22rem;
+  font-weight: 400;
+  pointer-events: none;
+  user-select: none;
+  bottom: -6rem;
+  right: -3rem;
+  line-height: 1;
+}
+
+.SecaoDepoimentos {
+  padding: 6rem 0;
+}
+
+.GradeDepoimentos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.DepoimentoCartao {
+  background-color: var(--CorCartao);
+  border: 1px solid var(--CorBorda);
+  border-radius: var(--RaioGrande);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.DepoimentoCartao:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(28, 28, 26, 0.08);
+}
+
+.DepoimentoEstrelas {
+  color: var(--CorAmarelo);
+  display: flex;
+  gap: 0.15rem;
+  margin-bottom: 1rem;
+}
+
+.DepoimentoTexto {
+  font-family: var(--FonteDisplay);
+  font-size: 1.2rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--CorTexto);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.DepoimentoAutor {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--CorBorda);
+}
+
+.DepoimentoAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--CorDestaqueFundo);
+  color: var(--CorDestaque);
+  display: grid;
+  place-items: center;
+  font-family: var(--FonteDisplay);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.DepoimentoAutorInfo strong {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.DepoimentoAutorInfo span {
+  font-family: var(--FonteMono);
+  font-size: 0.7rem;
+  color: var(--CorTextoSuave);
+  letter-spacing: 0.05em;
+}
+
+.SecaoPerguntas {
+  padding: 6rem 0;
+  background-color: var(--CorCartao);
+  border-top: 1px solid var(--CorBorda);
+  border-bottom: 1px solid var(--CorBorda);
+}
+
+.GradePerguntas {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.PerguntaItem {
+  background-color: var(--CorFundo);
+  border: 1px solid var(--CorBorda);
+  border-radius: var(--Raio);
+  margin-bottom: 0.85rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.PerguntaItem[open] {
+  border-color: var(--CorDestaque);
+}
+
+.PerguntaTitulo {
+  padding: 1.35rem 1.6rem;
+  font-weight: 600;
+  font-size: 1.02rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--CorTexto);
+}
+
+.PerguntaTitulo::-webkit-details-marker {
+  display: none;
+}
+
+.PerguntaIcone {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--CorCartao);
+  border: 1px solid var(--CorBorda);
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--CorTextoSuave);
+  transition: all 0.3s ease;
+}
+
+.PerguntaItem[open] .PerguntaIcone {
+  transform: rotate(45deg);
+  background-color: var(--CorDestaque);
+  border-color: var(--CorDestaque);
+  color: var(--CorFundo);
+}
+
+.PerguntaResposta {
+  padding: 0 1.6rem 1.5rem;
+  color: var(--CorTextoSuave);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.SecaoFinal {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.FinalConteudo {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.FinalTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.25rem;
+}
+
+.FinalTitulo em {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+.FinalSubtitulo {
+  font-size: 1.15rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+}
+
+.FinalAcao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--CorTexto);
+  color: var(--CorFundo);
+  padding: 1.25rem 2.25rem;
+  border-radius: var(--Raio);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 10px 28px rgba(28, 28, 26, 0.18);
+  margin-bottom: 1rem;
+}
+
+.FinalAcao:hover {
+  background-color: var(--CorDestaque);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(74, 107, 58, 0.3);
+}
+
+.FinalAcao svg {
+  transition: transform 0.25s ease;
+}
+
+.FinalAcao:hover svg {
+  transform: translateX(4px);
+}
+
+.FinalSeguranca {
+  font-family: var(--FonteMono);
+  font-size: 0.78rem;
+  color: var(--CorTextoSuave);
+  letter-spacing: 0.05em;
+}
+
+.RodapePagina {
+  background-color: var(--CorTexto);
+  color: rgba(250, 250, 247, 0.8);
+  padding: 4rem 0 2rem;
+}
+
+.RodapeConteudo {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(250, 250, 247, 0.1);
+}
+
+.RodapeColunaPrincipal .LogoMarca {
+  color: var(--CorFundo);
+  margin-bottom: 1rem;
+}
+
+.RodapeColunaPrincipal .LogoIcone::before {
+  background-color: var(--CorDestaqueClaro);
+}
+
+.RodapeColunaPrincipal .LogoIcone {
+  background-color: var(--CorFundo);
+}
+
+.RodapeColunaPrincipal .LogoIcone::after {
+  background-color: var(--CorTexto);
+}
+
+.RodapeDescricao {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 360px;
+  color: rgba(250, 250, 247, 0.6);
+}
+
+.RodapeColunaTitulo {
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--CorFundo);
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+.RodapeLista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.RodapeLista a {
+  color: rgba(250, 250, 247, 0.6);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: color 0.2s ease;
+}
+
+.RodapeLista a:hover {
+  color: var(--CorDestaqueClaro);
+}
+
+.RodapeBase {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--FonteMono);
+  font-size: 0.75rem;
+  color: rgba(250, 250, 247, 0.4);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 968px) {
+  .SobreGrade,
+  .AmostraGrade,
+  .OfertaConteudo {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .SelosConteudo {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .RodapeConteudo {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .BarraTopoNav {
+    display: none;
+  }
+
+  .PreviewLivro {
+    transform: perspective(1200px) rotateY(-10deg) rotateX(5deg);
+    width: 220px;
+    height: 300px;
+  }
+
+  .PreviewLivroTitulo {
+    font-size: 2rem;
+  }
+
+  .HeroiOrnamentoEsquerda,
+  .HeroiOrnamentoDireita {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .SecaoHeroi {
+    padding: 3rem 0 4rem;
+  }
+
+  .HeroiAcoes {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .BotaoPrincipal,
+  .BotaoSecundario {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .SelosConteudo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .CartaoOferta {
+    padding: 2rem 1.5rem;
+  }
+
+  .CartaoOfertaPrecoNumero {
+    font-size: 4rem;
+  }
+
+  .RodapeConteudo {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="BarraTopo">
+  <div class="Container">
+    <div class="BarraTopoConteudo">
+      <a href="#" class="LogoMarca">
+        <div class="LogoIcone"></div>
+        <span class="LogoTexto">Back<em>end</em> Lab</span>
+      </a>
+      <nav>
+        <ul class="BarraTopoNav">
+          <li class="NavItem"><a href="#Conteudo">Conteúdo</a></li>
+          <li class="NavItem"><a href="#Amostra">Amostra</a></li>
+          <li class="NavItem"><a href="#Perguntas">Perguntas</a></li>
+        </ul>
+      </nav>
+      <a href="https://pay.celetus.com/HN5RU1U6" class="BotaoBarra" target="_blank" rel="noopener">
+        Comprar
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="SecaoHeroi">
+    <div class="HeroiOrnamento HeroiOrnamentoEsquerda">{</div>
+    <div class="HeroiOrnamento HeroiOrnamentoDireita">}</div>
+
+    <div class="Container">
+      <div class="HeroiConteudo">
+        <div class="HeroiAviso">
+          <span class="HeroiAvisoIcone">i</span>
+          <span>Material introdutório · Ideal para começar do zero</span>
+        </div>
+
+        <h1 class="HeroiTitulo">
+          Sua primeira <span class="HeroiTituloItalico">porta de entrada</span> para o mundo do back-end.
+        </h1>
+
+        <p class="HeroiSubtitulo">
+          Um e-book curto, leve e amigável para você entender os fundamentos do desenvolvimento back-end sem se perder em tutoriais soltos. Pensado para quem está dando os primeiros passos.
+        </p>
+
+        <div class="HeroiAcoes">
+          <a href="https://pay.celetus.com/HN5RU1U6" class="BotaoPrincipal" target="_blank" rel="noopener">
+            Quero o e-book por R$ 10
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a href="#Conteudo" class="BotaoSecundario">
+            <span>Ver o conteúdo</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="HeroiSeguranca">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Pagamento seguro · Acesso imediato após a compra</span>
+        </div>
+
+        <div class="HeroiPreview">
+          <div class="PreviewFloatingBadge PreviewBadgePreco">R$ 10,00</div>
+          <div class="PreviewFloatingBadge PreviewBadgeIntro">Material Introdutório</div>
+
+          <div class="PreviewLivro">
+            <div class="PreviewLivroCapa">
+              <div class="PreviewLivroEtiqueta">E-book · Edição 2026</div>
+              <div class="PreviewLivroTitulo">
+                Back-End
+                <em>Essencial</em>
+              </div>
+              <div class="PreviewLivroBase">
+                <span>11 capítulos</span>
+                <span>+ 20 questões</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="SecaoSelos">
+    <div class="Container">
+      <div class="SelosConteudo">
+        <div class="SeloItem">
+          <span class="SeloNumero">11</span>
+          <span class="SeloDescricao">Capítulos</span>
+        </div>
+        <div class="SeloItem">
+          <span class="SeloNumero">20+</span>
+          <span class="SeloDescricao">Questões</span>
+        </div>
+        <div class="SeloItem">
+          <span class="SeloNumero">∞</span>
+          <span class="SeloDescricao">Acesso vitalício</span>
+        </div>
+        <div class="SeloItem">
+          <span class="SeloNumero">7d</span>
+          <span class="SeloDescricao">Garantia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="SecaoSobre">
+    <div class="Container">
+      <div class="SobreGrade">
+        <div class="SobreTexto">
+          <span class="SobreEtiqueta">Para quem é este e-book</span>
+          <h2 class="SobreTitulo">
+            Um ponto de partida <em>amigável</em>, sem complicação.
+          </h2>
+          <p class="SobreTexto">
+            Este é um material <strong>introdutório</strong>. A proposta não é esgotar todos os assuntos do back-end, e sim te dar uma base sólida e organizada para que você consiga entender os conceitos centrais e seguir estudando com clareza.
+          </p>
+          <p class="SobreTexto">
+            Ideal se você está começando agora, voltando aos estudos após um tempo, ou quer revisar conceitos antes de uma entrevista técnica.
+          </p>
+        </div>
+
+        <div class="SobreCartao">
+          <div class="SobreCartaoTitulo">Este e-book é perfeito se você</div>
+          <ul class="SobreCartaoLista">
+            <li class="SobreCartaoItem">
+              <div>
+                <strong>Está dando os primeiros passos no back-end</strong>
+                <span>e quer entender os conceitos de uma forma clara e organizada.</span>
+              </div>
+            </li>
+            <li class="SobreCartaoItem">
+              <div>
+                <strong>Quer revisar fundamentos</strong>
+                <span>antes de uma entrevista técnica ou de mergulhar em um framework.</span>
+              </div>
+            </li>
+            <li class="SobreCartaoItem">
+              <div>
+                <strong>Prefere um material direto e ilustrado</strong>
+                <span>em vez de assistir horas de vídeos para entender o básico.</span>
+              </div>
+            </li>
+            <li class="SobreCartaoItem">
+              <div>
+                <strong>Não quer gastar muito agora</strong>
+                <span>para experimentar a área antes de investir em cursos mais longos.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="SecaoConteudo" id="Conteudo">
+    <div class="Container">
+      <div class="CabecalhoSecao">
+        <span class="CabecalhoEtiqueta">Sumário do e-book</span>
+        <h2 class="CabecalhoTitulo">
+          11 capítulos para você <em>começar com o pé direito</em>.
+        </h2>
+        <p class="CabecalhoDescricao">
+          Cada capítulo cobre um conceito essencial do back-end, com exemplos práticos e linguagem acessível. Sem promessas exageradas — só uma base sólida para continuar aprendendo.
+        </p>
+      </div>
+
+      <div class="GradeConteudo">
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">01 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Arquitetura Web</h3>
+          <p class="ConteudoCartaoDescricao">
+            Entenda as diferenças entre SPA, PWA e SSR de forma simples.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">SPA</span>
+            <span class="ConteudoCartaoTag">PWA</span>
+            <span class="ConteudoCartaoTag">SSR</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">02 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Coleções JS</h3>
+          <p class="ConteudoCartaoDescricao">
+            Set, Map, Template Strings e JSON com exemplos do dia a dia.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">Set</span>
+            <span class="ConteudoCartaoTag">Map</span>
+            <span class="ConteudoCartaoTag">JSON</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">03 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">NPM e NPX</h3>
+          <p class="ConteudoCartaoDescricao">
+            Entenda a diferença entre instalar e executar pacotes.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">NPM</span>
+            <span class="ConteudoCartaoTag">NPX</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">04 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 7V4h16v3"/>
+                <path d="M9 20h6"/>
+                <line x1="12" y1="4" x2="12" y2="20"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Módulos no Node</h3>
+          <p class="ConteudoCartaoDescricao">
+            CommonJS ou ES Modules? Compare e escolha com segurança.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">CJS</span>
+            <span class="ConteudoCartaoTag">ESM</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">05 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Sync &amp; Async</h3>
+          <p class="ConteudoCartaoDescricao">
+            Event Loop, callbacks, Promises e async/await sem mistério.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">Async</span>
+            <span class="ConteudoCartaoTag">Await</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">06 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Protocolo HTTP</h3>
+          <p class="ConteudoCartaoDescricao">
+            GET, POST, PUT, PATCH e DELETE explicados com clareza.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">REST</span>
+            <span class="ConteudoCartaoTag">CRUD</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">07 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Express.js</h3>
+          <p class="ConteudoCartaoDescricao">
+            EJS, middlewares e JWT para autenticação segura.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">EJS</span>
+            <span class="ConteudoCartaoTag">JWT</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">08 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                <line x1="15" y1="9" x2="15.01" y2="9"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Princípios SOLID</h3>
+          <p class="ConteudoCartaoDescricao">
+            Os 5 princípios da POO aplicados na prática.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">POO</span>
+            <span class="ConteudoCartaoTag">SOLID</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">09 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">GoF e GRASP</h3>
+          <p class="ConteudoCartaoDescricao">
+            Padrões de projeto essenciais para escrever bom código.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">GoF</span>
+            <span class="ConteudoCartaoTag">GRASP</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">10 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Arquiteturas</h3>
+          <p class="ConteudoCartaoDescricao">
+            Monolito, microsserviços, camadas, cliente-servidor e mais.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">Mono</span>
+            <span class="ConteudoCartaoTag">Micro</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">11 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11l3 3L22 4"/>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">+20 Questões</h3>
+          <p class="ConteudoCartaoDescricao">
+            Exercícios de fixação com gabarito comentado.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">Prática</span>
+            <span class="ConteudoCartaoTag">Gabarito</span>
+          </div>
+        </article>
+
+        <article class="ConteudoCartao">
+          <div class="ConteudoCartaoTopo">
+            <span class="ConteudoCartaoNumero">12 ·</span>
+            <div class="ConteudoCartaoIcone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="ConteudoCartaoTitulo">Bônus</h3>
+          <p class="ConteudoCartaoDescricao">
+            Atualizações futuras e acesso à comunidade de estudos.
+          </p>
+          <div class="ConteudoCartaoTags">
+            <span class="ConteudoCartaoTag">Extra</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="SecaoAmostra" id="Amostra">
+    <div class="Container">
+      <div class="AmostraGrade">
+        <div class="AmostraTexto">
+          <span class="SobreEtiqueta">Uma amostra do material</span>
+          <h2>
+            Conteúdo <em>claro e ilustrado</em>, sem enrolação.
+          </h2>
+          <p>
+            Cada capítulo do e-book é diagramado de forma profissional: tipografia legível, exemplos de código destacados e tabelas comparativas para você fixar os conceitos com facilidade.
+          </p>
+          <p>
+            A ideia é que você consiga ler do começo ao fim em algumas tardes — ou consultar quando precisar revisar algum tópico específico.
+          </p>
+
+          <div class="AmostraNumeros">
+            <div class="AmostraNumeroItem">
+              <strong>~80</strong>
+              <span>Páginas</span>
+            </div>
+            <div class="AmostraNumeroItem">
+              <strong>11</strong>
+              <span>Capítulos</span>
+            </div>
+            <div class="AmostraNumeroItem">
+              <strong>PDF</strong>
+              <span>Formato</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="AmostraJanela">
+          <div class="AmostraJanelaBarra">
+            <div class="JanelaBolinha JanelaBolinhaVermelha"></div>
+            <div class="JanelaBolinha JanelaBolinhaAmarela"></div>
+            <div class="JanelaBolinha JanelaBolinhaVerde"></div>
+            <span class="JanelaArquivo">capitulo_07.pdf · página 24</span>
+          </div>
+          <div class="AmostraJanelaCorpo">
+            <div class="AmostraJanelaCabecalho">
+              <span>Capítulo 07</span>
+              <span>Express.js</span>
+            </div>
+            <h3 class="AmostraJanelaTitulo">JWT — JSON Web Token</h3>
+            <p class="AmostraJanelaTexto">
+              JWT é um padrão aberto (RFC 7519) para transmissão segura de informações em formato compacto. Amplamente utilizado em autenticação <em>stateless</em>.
+            </p>
+            <div class="AmostraCodigo">
+<span class="CodigoComentario">// Geração do token</span><br>
+<span class="CodigoPalavra">import</span> jwt <span class="CodigoPalavra">from</span> <span class="CodigoString">'jsonwebtoken'</span>;<br><br>
+<span class="CodigoPalavra">const</span> token = jwt.<span class="CodigoPalavra">sign</span>(<br>
+&nbsp;&nbsp;{ id: usuario.id },<br>
+&nbsp;&nbsp;process.env.JWT_SECRET,<br>
+&nbsp;&nbsp;{ expiresIn: <span class="CodigoString">'1h'</span> }<br>
+);
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="SecaoOferta">
+    <div class="OrnamentoOferta">&amp;</div>
+    <div class="Container">
+      <div class="OfertaConteudo">
+        <div class="OfertaTexto">
+          <span class="CabecalhoEtiqueta">A oferta</span>
+          <h2 class="OfertaTitulo">
+            Por menos do que um <em>café da manhã</em>.
+          </h2>
+          <p class="OfertaSubtitulo">
+            Como é um material introdutório, mantemos o preço acessível para que o investimento não seja uma barreira para quem está começando.
+          </p>
+
+          <ul class="OfertaCheckList">
+            <li class="OfertaCheckItem">
+              <span class="OfertaCheckIcone">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span>E-book completo em PDF de alta qualidade</span>
+            </li>
+            <li class="OfertaCheckItem">
+              <span class="OfertaCheckIcone">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span>11 capítulos com exemplos práticos</span>
+            </li>
+            <li class="OfertaCheckItem">
+              <span class="OfertaCheckIcone">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span>+20 questões com gabarito comentado</span>
+            </li>
+            <li class="OfertaCheckItem">
+              <span class="OfertaCheckIcone">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span>Atualizações futuras sem custo extra</span>
+            </li>
+            <li class="OfertaCheckItem">
+              <span class="OfertaCheckIcone">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span>7 dias de garantia incondicional</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="CartaoOferta">
+          <div class="CartaoOfertaSelo">Material introdutório</div>
+
+          <div class="CartaoOfertaIntro">
+            <h3 class="CartaoOfertaIntroTitulo">
+              E-book <em>Back-End Essencial</em>
+            </h3>
+            <p class="CartaoOfertaIntroDescricao">Acesso imediato após o pagamento</p>
+          </div>
+
+          <div class="CartaoOfertaPreco">
+            <div class="CartaoOfertaPrecoValor">
+              <span class="CartaoOfertaPrecoMoeda">R$</span>
+              <span class="CartaoOfertaPrecoNumero">10</span>
+              <span class="CartaoOfertaPrecoCentavos">,00</span>
+            </div>
+            <p class="CartaoOfertaPrecoLegenda">
+              Pagamento <strong>único</strong> · sem mensalidades
+            </p>
+          </div>
+
+          <a href="https://pay.celetus.com/HN5RU1U6" class="CartaoOfertaBotao" target="_blank" rel="noopener">
+            <span>Comprar agora por R$ 10</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+
+          <div class="CartaoOfertaInfo">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span>Pagamento 100% seguro via Celetus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="SecaoDepoimentos">
+    <div class="Container">
+      <div class="CabecalhoSecao">
+        <span class="CabecalhoEtiqueta">Quem já leu</span>
+        <h2 class="CabecalhoTitulo">
+          Histórias de quem deu o <em>primeiro passo</em>.
+        </h2>
+      </div>
+
+      <div class="GradeDepoimentos">
+        <article class="DepoimentoCartao">
+          <div class="DepoimentoEstrelas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="DepoimentoTexto">
+            "Eu não sabia por onde começar no back-end. Esse e-book me deu uma base e o caminho para continuar estudando."
+          </p>
+          <div class="DepoimentoAutor">
+            <div class="DepoimentoAvatar">M</div>
+            <div class="DepoimentoAutorInfo">
+              <strong>Mariana Souza</strong>
+              <span>Estudante · São Paulo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="DepoimentoCartao">
+          <div class="DepoimentoEstrelas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="DepoimentoTexto">
+            "Material direto e bem ilustrado. Pelo preço, é simplesmente imbatível para quem quer começar."
+          </p>
+          <div class="DepoimentoAutor">
+            <div class="DepoimentoAvatar">R</div>
+            <div class="DepoimentoAutorInfo">
+              <strong>Rafael Lima</strong>
+              <span>Dev Júnior · Curitiba</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="DepoimentoCartao">
+          <div class="DepoimentoEstrelas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="DepoimentoTexto">
+            "Usei pra revisar antes de uma entrevista. As questões finais me ajudaram bastante a fixar o conteúdo."
+          </p>
+          <div class="DepoimentoAutor">
+            <div class="DepoimentoAvatar">C</div>
+            <div class="DepoimentoAutorInfo">
+              <strong>Camila Ferreira</strong>
+              <span>Iniciante · Recife</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="SecaoPerguntas" id="Perguntas">
+    <div class="Container">
+      <div class="CabecalhoSecao">
+        <span class="CabecalhoEtiqueta">Perguntas frequentes</span>
+        <h2 class="CabecalhoTitulo">
+          Talvez sua dúvida <em>esteja aqui</em>.
+        </h2>
+      </div>
+
+      <div class="GradePerguntas">
+        <details class="PerguntaItem" open>
+          <summary class="PerguntaTitulo">
+            <span>Esse e-book é para quem está começando do zero?</span>
+            <span class="PerguntaIcone">+</span>
+          </summary>
+          <div class="PerguntaResposta">
+            Sim. Esse é um material introdutório, pensado especialmente para quem está dando os primeiros passos no back-end. Os conceitos são explicados de forma acessível, sem pressupor conhecimento prévio em servidores ou frameworks.
+          </div>
+        </details>
+
+        <details class="PerguntaItem">
+          <summary class="PerguntaTitulo">
+            <span>O que recebo após a compra?</span>
+            <span class="PerguntaIcone">+</span>
+          </summary>
+          <div class="PerguntaResposta">
+            Você recebe imediatamente o e-book em PDF no e-mail cadastrado. O arquivo é otimizado para leitura no computador, tablet ou impressão, e o acesso é vitalício.
+          </div>
+        </details>
+
+        <details class="PerguntaItem">
+          <summary class="PerguntaTitulo">
+            <span>Esse material substitui um curso completo?</span>
+            <span class="PerguntaIcone">+</span>
+          </summary>
+          <div class="PerguntaResposta">
+            Não. Como o próprio nome sugere, é um material <strong>introdutório</strong>. A proposta é te dar uma base sólida e organizada para que, depois, você consiga seguir estudos mais profundos com mais clareza e direção.
+          </div>
+        </details>
+
+        <details class="PerguntaItem">
+          <summary class="PerguntaTitulo">
+            <span>Por que o preço é tão acessível?</span>
+            <span class="PerguntaIcone">+</span>
+          </summary>
+          <div class="PerguntaResposta">
+            Porque a ideia é que o preço não seja uma barreira para quem está começando. R$ 10 é menos do que um café especial — um valor justo para um material introdutório bem organizado.
+          </div>
+        </details>
+
+        <details class="PerguntaItem">
+          <summary class="PerguntaTitulo">
+            <span>Existe garantia se eu não gostar?</span>
+            <span class="PerguntaIcone">+</span>
+          </summary>
+          <div class="PerguntaResposta">
+            Sim. Você tem 7 dias de garantia incondicional. Se o material não atender às suas expectativas, basta solicitar o reembolso por e-mail e devolvemos 100% do valor.
+          </div>
+        </details>
+
+        <details class="PerguntaItem">
+          <summary class="PerguntaTitulo">
+            <span>Quais formas de pagamento são aceitas?</span>
+            <span class="PerguntaIcone">+</span>
+          </summary>
+          <div class="PerguntaResposta">
+            O pagamento é processado pela plataforma Celetus, que aceita Pix, cartão de crédito e boleto bancário, sempre em ambiente 100% seguro.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="SecaoFinal">
+    <div class="Container">
+      <div class="FinalConteudo">
+        <h2 class="FinalTitulo">
+          Comece sua jornada no back-end por apenas <em>R$ 10</em>.
+        </h2>
+        <p class="FinalSubtitulo">
+          Um material introdutório que te dá a base que faltava — sem cobrar caro por isso. É menos do que um almoço, e pode ser o passo que faltava para você destravar nos estudos.
+        </p>
+        <a href="https://pay.celetus.com/HN5RU1U6" class="FinalAcao" target="_blank" rel="noopener">
+          Quero o e-book agora
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <div class="FinalSeguranca">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span>Pagamento seguro · Acesso imediato · 7 dias de garantia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="RodapePagina">
+  <div class="Container">
+    <div class="RodapeConteudo">
+      <div class="RodapeColunaPrincipal">
+        <a href="#" class="LogoMarca">
+          <div class="LogoIcone"></div>
+          <span class="LogoTexto" style="color: var(--CorFundo);">Back<em>end</em> Lab</span>
+        </a>
+        <p class="RodapeDescricao" style="margin-top: 1rem;">
+          Material de estudo introdutório para quem quer dar os primeiros passos no back-end com clareza e organização.
+        </p>
+      </div>
+
+      <div class="RodapeColuna">
+        <h4 class="RodapeColunaTitulo">Produto</h4>
+        <ul class="RodapeLista">
+          <li><a href="#Conteudo">Conteúdo</a></li>
+          <li><a href="#Amostra">Amostra</a></li>
+          <li><a href="#Perguntas">Perguntas</a></li>
+          <li><a href="https://pay.celetus.com/HN5RU1U6" target="_blank" rel="noopener">Comprar</a></li>
+        </ul>
+      </div>
+
+      <div class="RodapeColuna">
+        <h4 class="RodapeColunaTitulo">Suporte</h4>
+        <ul class="RodapeLista">
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Política de reembolso</a></li>
+          <li><a href="#">Termos de uso</a></li>
+          <li><a href="#">Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="RodapeBase">
+      <span>© 2026 · Backend Lab · Todos os direitos reservados</span>
+      <span>Feito com café em Goiânia</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
