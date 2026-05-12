@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obrigado pela Compra! | Backend Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --CorFundo: #fafaf7;
+  --CorCartao: #ffffff;
+  --CorTexto: #1c1c1a;
+  --CorTextoSuave: #6b6b65;
+  --CorDestaque: #4a6b3a;
+  --CorDestaqueClaro: #6b8b58;
+  --CorDestaqueFundo: #eef2ea;
+  --CorBorda: #e8e6df;
+  --CorSombraMedia: rgba(28, 28, 26, 0.08);
+  --CorAmarelo: #f4d35e;
+
+  --FonteDisplay: 'Instrument Serif', Georgia, serif;
+  --FonteCorpo: 'Geist', -apple-system, sans-serif;
+  --FonteMono: 'Geist Mono', monospace;
+
+  --Raio: 14px;
+  --RaioGrande: 22px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--FonteCorpo);
+  background-color: var(--CorFundo);
+  color: var(--CorTexto);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.Container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* Header */
+.BarraTopo {
+  background-color: rgba(250, 250, 247, 0.95);
+  border-bottom: 1px solid var(--CorBorda);
+  padding: 1.1rem 0;
+}
+
+.BarraTopoConteudo {
+  display: flex;
+  justify-content: center;
+}
+
+.LogoMarca {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--CorTexto);
+}
+
+.LogoIcone {
+  width: 32px;
+  height: 32px;
+  background-color: var(--CorTexto);
+  border-radius: 8px;
+}
+
+.LogoTexto {
+  font-family: var(--FonteDisplay);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.LogoTexto em {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+/* Main */
+main {
+  flex: 1;
+  padding: 5rem 0 6rem;
+}
+
+/* Ícone de confirmação */
+.IconeConfirmacao {
+  width: 72px;
+  height: 72px;
+  background-color: var(--CorDestaqueFundo);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  color: var(--CorDestaque);
+}
+
+/* Cabeçalho */
+.ObrigadoCabecalho {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ObrigadoEtiqueta {
+  display: inline-block;
+  font-family: var(--FonteMono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--CorDestaque);
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 1rem;
+  background-color: var(--CorDestaqueFundo);
+  border-radius: 100px;
+}
+
+.ObrigadoTitulo {
+  font-family: var(--FonteDisplay);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+
+.ObrigadoTitulo em {
+  font-style: italic;
+  color: var(--CorDestaque);
+}
+
+.ObrigadoSubtitulo {
+  font-size: 1.05rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.65;
+}
+
+/* Card de acesso */
+.CartaoAcesso {
+  background-color: var(--CorCartao);
+  border: 1px solid var(--CorBorda);
+  border-radius: var(--RaioGrande);
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 24px var(--CorSombraMedia);
+}
+
+.CartaoAcessoTitulo {
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--CorTextoSuave);
+  margin-bottom: 1.5rem;
+}
+
+.PassoLista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.PassoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.PassoNumero {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background-color: var(--CorDestaqueFundo);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--CorDestaque);
+  margin-top: 0.1rem;
+}
+
+.PassoTexto strong {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.PassoTexto span {
+  font-size: 0.88rem;
+  color: var(--CorTextoSuave);
+  line-height: 1.5;
+}
+
+/* Card de suporte */
+.CartaoSuporte {
+  background-color: var(--CorFundo);
+  border: 1px solid var(--CorBorda);
+  border-radius: var(--Raio);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.CartaoSuporteTexto strong {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.CartaoSuporteTexto span {
+  font-size: 0.85rem;
+  color: var(--CorTextoSuave);
+}
+
+.BotaoSuporte {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background-color: var(--CorTexto);
+  color: var(--CorFundo);
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.BotaoSuporte:hover {
+  opacity: 0.8;
+}
+
+/* Footer */
+.RodapeMini {
+  background-color: var(--CorTexto);
+  color: rgba(250, 250, 247, 0.5);
+  padding: 1.5rem 0;
+  font-family: var(--FonteMono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  main { padding: 3rem 0 4rem; }
+  .CartaoAcesso { padding: 1.75rem 1.25rem; }
+  .CartaoSuporte { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header class="BarraTopo">
+  <div class="Container">
+    <div class="BarraTopoConteudo">
+      <a href="../index.html" class="LogoMarca">
+        <div class="LogoIcone"></div>
+        <span class="LogoTexto">Back<em>end</em> Lab</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="Container">
+
+    <div class="IconeConfirmacao">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <div class="ObrigadoCabecalho">
+      <span class="ObrigadoEtiqueta">Compra confirmada</span>
+      <h1 class="ObrigadoTitulo">
+        Obrigado pela<br><em>sua compra!</em>
+      </h1>
+      <p class="ObrigadoSubtitulo">
+        Seu pedido foi processado com sucesso. Veja abaixo como acessar o seu material.
+      </p>
+    </div>
+
+    <div class="CartaoAcesso">
+      <p class="CartaoAcessoTitulo">Como acessar o seu e-book</p>
+      <ul class="PassoLista">
+        <li class="PassoItem">
+          <div class="PassoNumero">01</div>
+          <div class="PassoTexto">
+            <strong>Verifique seu e-mail</strong>
+            <span>A Celetus enviou um e-mail de confirmação para o endereço cadastrado na compra.</span>
+          </div>
+        </li>
+        <li class="PassoItem">
+          <div class="PassoNumero">02</div>
+          <div class="PassoTexto">
+            <strong>Baixe o arquivo PDF</strong>
+            <span>O link de download estará no e-mail. O acesso é imediato e vitalício.</span>
+          </div>
+        </li>
+        <li class="PassoItem">
+          <div class="PassoNumero">03</div>
+          <div class="PassoTexto">
+            <strong>Confira a pasta de spam</strong>
+            <span>Se não encontrar o e-mail em alguns minutos, verifique a caixa de spam ou lixo eletrônico.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="CartaoSuporte">
+      <div class="CartaoSuporteTexto">
+        <strong>Algum problema com o acesso?</strong>
+        <span>Nossa equipe de suporte está pronta para ajudar.</span>
+      </div>
+      <a href="mailto:suporte@backendlab.com.br" class="BotaoSuporte">
+        Falar com suporte
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="RodapeMini">
+  <div class="Container">
+    © 2026 · Backend Lab · Todos os direitos reservados
+  </div>
+</footer>
+
+</body>
+</html>
